@@ -1,15 +1,16 @@
-﻿using Il2Cpp;
+﻿using HarmonyLib;
+using Il2Cpp;
 using MelonLoader;
-using HarmonyLib;
+using MelonLoader.Utils;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using MelonLoader.Utils;
-using System.IO;
 
 namespace MSZDialogueMap
 {
@@ -19,35 +20,57 @@ namespace MSZDialogueMap
         string activeScene;
         bool isGameScene => activeScene == "Version 1.9 POST";
 
-
-        string savePath = Path.Combine(MelonEnvironment.MelonBaseDirectory, "mapper", "nodes.json");
+        string savePath = Path.Combine(MelonEnvironment.ModsDirectory, "mapper", "nodes.json");
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
             activeScene = sceneName;
             if (!isGameScene) return;
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
             trees = UnityEngine.Object.FindObjectsOfType<DialogueTree>();
-            HashSet<DialogueNode> nodes = new HashSet<DialogueNode>();
+            List<DialogueNode> nodes = new List<DialogueNode>();
             foreach (DialogueTree t in trees)
             {
                 foreach(DialogueNode node in t.GetAllNodes())
                 {
-                    LoggerInstance.Msg(node.dialogueText);
+                    LoggerInstance.Msg($"{node.speakerName}: {node.dialogueText}");
                     nodes.Add(node);
                 }
             }
+            sw.Stop();
+            LoggerInstance.Msg($"Found {nodes.Count} nodes in {sw.ElapsedMilliseconds}ms");
+
+            sw.Restart();
             LoggerInstance.Msg($"Serializing {nodes.Count} nodes...");
 
+            List<DialogueNodeDTO> dtos = nodes.Select(node => new DialogueNodeDTO
+            {
+                id = nodes.IndexOf(node),
+                dialogueText = node.dialogueText,
+                speakerName = node.speakerName,
+                delay = node.delay,
+                nextNodeIds = node.nextNodes?
+                     .Where(n => n != null)
+                     .Select(n => nodes.IndexOf(n))
+                     .ToArray()
+            }).ToList();
+
             Directory.CreateDirectory(Path.GetDirectoryName(savePath));
-            string json = JsonConvert.SerializeObject(nodes, Formatting.Indented);
-            File.WriteAllText(json, savePath);
-            
-            LoggerInstance.Msg($"Saved {nodes.Count} nodes to {savePath}");
+            string json = JsonConvert.SerializeObject(dtos, Formatting.Indented);
+            File.WriteAllText(savePath, json);
+
+            sw.Stop();
+            LoggerInstance.Msg($"Sucessfuly saved nodes to {savePath}. Duration: {sw.ElapsedMilliseconds}ms");
         }
     }
 
     public class DialogueNodeDTO
     {
+        public int id;
+        public int[] nextNodeIds;
         public string dialogueText;
         public string speakerName;
         public float delay;
@@ -56,9 +79,9 @@ namespace MSZDialogueMap
 
     public static class Cool
     {
-        public static HashSet<DialogueNode> GetAllNodes(this DialogueTree tree)
+        public static List<DialogueNode> GetAllNodes(this DialogueTree tree)
         {
-            HashSet<DialogueNode> visited = new HashSet<DialogueNode>();
+            List<DialogueNode> visited = new List<DialogueNode>();
 
             foreach (DialogueNode firstNode in tree.startNodes)
             {
@@ -67,7 +90,7 @@ namespace MSZDialogueMap
 
             return visited;
         }
-        public static HashSet<DialogueNode> TraverseNode(DialogueNode node, HashSet<DialogueNode> visited)
+        public static List<DialogueNode> TraverseNode(DialogueNode node, List<DialogueNode> visited)
         {
             if (node == null || visited.Contains(node))
                 return visited;
