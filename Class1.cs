@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using static Il2CppSystem.DateTimeParse;
 
 namespace MSZDialogueMap
 {
@@ -74,7 +75,6 @@ namespace MSZDialogueMap
         public string dialogueText;
         public string speakerName;
         public float delay;
-        public string[] nextNodeTexts;
     }
 
     public static class Cool
