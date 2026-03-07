@@ -60,7 +60,7 @@ namespace MSZDialogueMap
             }).ToList();
 
             Directory.CreateDirectory(Path.GetDirectoryName(savePath));
-            string json = JsonConvert.SerializeObject(dtos, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(new DialogueForest { nodes=dtos, gameVersion=Application.version}, Formatting.Indented); 
             File.WriteAllText(savePath, json);
 
             sw.Stop();
@@ -75,6 +75,12 @@ namespace MSZDialogueMap
         public string dialogueText;
         public string speakerName;
         public float delay;
+    }
+
+    public class DialogueForest
+    {
+        public List<DialogueNodeDTO> nodes;
+        public string gameVersion;
     }
 
     public static class Cool
