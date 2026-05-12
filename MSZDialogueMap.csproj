@@ -31,17 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\net35\0Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppInterop.Common">
       <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\net6\Il2CppInterop.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Il2CppInterop.HarmonySupport">
-      <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\net6\Il2CppInterop.HarmonySupport.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppInterop.Runtime">
       <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\net6\Il2CppInterop.Runtime.dll</HintPath>
@@ -52,11 +46,11 @@
     <Reference Include="MelonLoader">
       <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\net6\MelonLoader.dll</HintPath>
     </Reference>
+    <Reference Include="Miside Zero Dialogue Override">
+      <HintPath>.\Miside Zero Dialogue Override.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\net35\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Semver">
-      <HintPath>..\launcher.NET\bin\Debug\net10.0-windows\Semver.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -69,38 +63,8 @@
     <Reference Include="UnityEngine">
       <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\Il2CppAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.AudioModule">
-      <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\Il2CppAssemblies\UnityEngine.AudioModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\Il2CppAssemblies\UnityEngine.ImageConversionModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\Il2CppAssemblies\UnityEngine.IMGUIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\Il2CppAssemblies\UnityEngine.InputLegacyModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\Il2CppAssemblies\UnityEngine.PhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\Il2CppAssemblies\UnityEngine.UIElementsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIModule">
-      <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\MelonLoader\Il2CppAssemblies\UnityEngine.UIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UniverseLib.ML.IL2CPP.Interop">
-      <HintPath>..\..\AppData\Local\Programs\Miside Zero Launcher\games\MiSide Zero Alpha 0.7.1\UserLibs\UniverseLib.ML.IL2CPP.Interop.dll</HintPath>
-    </Reference>
-    <Reference Include="VoidLib">
-      <HintPath>..\00_MSZ_DLLS\VoidLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
