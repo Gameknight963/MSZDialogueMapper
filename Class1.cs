@@ -16,6 +16,11 @@ namespace MSZDialogueMap
         DialogueTree[] trees;
         readonly string savePath = Path.Combine(MelonEnvironment.ModsDirectory, "mapper", "nodes.json");
 
+        public override void OnInitializeMelon()
+        {
+            MZDO.Core.UserPacksEnabled = false;
+        }
+
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
             if (sceneName != "Version 1.9 POST") return;
