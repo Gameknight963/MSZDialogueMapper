@@ -62,7 +62,10 @@ namespace MSZDialogueMap
                         .ToArray()
                         .Where(n => n != null)
                         .Select(n => treeNodes.IndexOf(n))
-                        .ToList()
+                        .ToList(),
+                    chirpTime = tree.chirpTime,
+                    exitDelay = tree.exitDelay,
+                    initialDelay = tree.initialDelay
                 });
 
                 LoggerInstance.Msg($"Tree {treeIndex}: {dtos.Count} nodes");
