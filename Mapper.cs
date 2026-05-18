@@ -60,12 +60,13 @@ namespace MSZDialogueMap
                     nodes = dtos,
                     startNodeIds = tree.startNodes
                         .ToArray()
-                        .Where(n => n != null)
+                        .Where(n => n != null)                        
                         .Select(n => treeNodes.IndexOf(n))
                         .ToList(),
                     chirpTime = tree.chirpTime,
                     exitDelay = tree.exitDelay,
-                    initialDelay = tree.initialDelay
+                    initialDelay = tree.initialDelay,
+                    name = tree.gameObject.name
                 });
 
                 LoggerInstance.Msg($"Tree {treeIndex}: {dtos.Count} nodes");
@@ -80,27 +81,6 @@ namespace MSZDialogueMap
             File.WriteAllText(savePath, json);
             sw.Stop();
             LoggerInstance.Msg($"Saved to {savePath} in {sw.ElapsedMilliseconds}ms");
-        }
-    }
-
-    public static class Cool
-    {
-        public static List<DialogueNode> GetAllNodes(this DialogueTree tree)
-        {
-            List<DialogueNode> visited = new List<DialogueNode>();
-            foreach (DialogueNode firstNode in tree.startNodes)
-                TraverseNode(firstNode, visited);
-            return visited;
-        }
-
-        public static List<DialogueNode> TraverseNode(DialogueNode node, List<DialogueNode> visited)
-        {
-            if (node == null || visited.Contains(node)) return visited;
-            visited.Add(node);
-            if (node.nextNodes != null)
-                foreach (DialogueNode next in node.nextNodes)
-                    TraverseNode(next, visited);
-            return visited;
         }
     }
 }
