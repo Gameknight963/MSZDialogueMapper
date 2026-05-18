@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: MelonInfo(typeof(Mapper), "MSZDialougeMapper", "1.0.0", "Gameknight963")]
+[assembly: MelonInfo(typeof(Mapper), "MSZDialougeMapper", "2.0.0", "Gameknight963")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
