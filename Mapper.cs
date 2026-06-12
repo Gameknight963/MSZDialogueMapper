@@ -52,7 +52,8 @@ namespace MSZDialogueMap
                         nextNodeIds = node.nextNodes?
                             .Where(n => n != null)
                             .Select(n => treeNodes.IndexOf(n))
-                            .ToArray()
+                            .ToArray(),
+                        expression = node.expression
                     };
                 }).ToList();
 
