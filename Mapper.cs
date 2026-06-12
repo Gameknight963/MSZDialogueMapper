@@ -33,6 +33,7 @@ namespace MSZDialogueMap
                 TargetGameVersion = Application.version,
                 trees = new List<DialogueTreeDTO>()
             };
+            pack.MatchGameVersion();
 
             foreach (DialogueTree tree in trees)
             {
